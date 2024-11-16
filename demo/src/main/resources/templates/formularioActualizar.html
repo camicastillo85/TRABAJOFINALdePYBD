@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Actualizar Producto</title>
+</head>
+<body>
+    <h1>Actualizar Producto</h1>
+    <form th:action="@{/actualizarProducto}" th:object="${producto}" method="post">
+        
+        <!-- Campo oculto para enviar el id -->
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required />
+        <br />
+        
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" th:field="*{precio}" required />
+        <br />
+        
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" th:field="*{descripcion}" />
+        <br />
+        
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>
