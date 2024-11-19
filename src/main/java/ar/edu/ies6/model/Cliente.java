@@ -1,9 +1,14 @@
 package ar.edu.ies6.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
+
 public class Cliente {
 
 	private String id;
     private String nombre;
+    private String apellido;
     private String email;
     private String telefono;
     private String direccion;
@@ -14,13 +19,15 @@ public class Cliente {
 		
 	}
 
-	public Cliente(String id, String nombre, String email, String telefono, String direccion) {
+	public Cliente(String id, String nombre, String apellido, String email, String telefono, String direccion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.direccion = direccion;
+		
 	}
 
 	
@@ -38,6 +45,13 @@ public class Cliente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApelido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getEmail() {
