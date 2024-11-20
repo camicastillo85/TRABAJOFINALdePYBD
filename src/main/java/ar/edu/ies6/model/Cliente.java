@@ -14,11 +14,11 @@ public class Cliente {
     private String direccion;
     
     
-    
-	public Cliente() {
-		
-	}
-
+    //constructor
+    public Cliente() {
+    	
+    }
+	
 	public Cliente(String id, String nombre, String apellido, String email, String telefono, String direccion) {
 		super();
 		this.id = id;
