@@ -33,7 +33,7 @@ public void createProducto(Producto producto) {
     if (producto == null) {
         throw new IllegalArgumentException("El producto no puede ser nulo.");
     }
-    // El ID será generado automáticamente por la base de datos
+    
     productoRepository.save(producto);
 }
 
@@ -47,7 +47,7 @@ public void createProducto(Producto producto) {
         if (!productoRepository.existsById(producto.getId())) {
             throw new IllegalArgumentException("Producto con el ID " + producto.getId() + " no encontrado.");
         }
-        productoRepository.save(producto);  // Actualizar el producto
+        productoRepository.save(producto);  
     }
 
     // "Eliminar" un producto (actualizar el estado a false)
@@ -57,9 +57,9 @@ public void createProducto(Producto producto) {
         }
         Producto producto = productoRepository.findById(id).orElse(null);
         if (producto != null) {
-            producto.setEstado(false);  // Cambiar el estado a false para simular eliminación
+            producto.setEstado(false);  
             return productoRepository.save(producto);
         }
-        return null;  // Si el producto no existe, devuelve null
+        return null;  
     }
 }

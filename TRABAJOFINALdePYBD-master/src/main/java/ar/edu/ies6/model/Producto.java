@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Entity
 public class Producto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Generación automática del ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Integer id;
 
     @Column
@@ -30,19 +30,19 @@ public class Producto {
     private Integer cantidad;
 
     @Column(name = "fecha_creacion")
-    private LocalDate fechaCreacion;  // Fecha de creación del producto
+    private LocalDate fechaCreacion;  
 
     @Column
     private String marca;
 
     @Column
-    private Double peso;  // Peso del producto (por ejemplo, en kilogramos)
+    private Double peso;  
 
     @Column
-    private String dimensiones;  // Dimensiones del producto (por ejemplo, "30x20x10 cm")
+    private String dimensiones;  
 
     @Column(name = "fecha_expiracion")
-    private LocalDate fechaExpiracion;  // Fecha de expiración del producto (si aplica)
+    private LocalDate fechaExpiracion;  
 
     // Getters y Setters
 
