@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Cliente {
 
 	private String id;
+	private String dni;
     private String nombre;
     private String apellido;
     private String email;
@@ -19,9 +20,10 @@ public class Cliente {
     	
     }
 	
-	public Cliente(String id, String nombre, String apellido, String email, String telefono, String direccion) {
+	public Cliente(String id, String nombre, String apellido, String email, String telefono, String direccion, String dni) {
 		super();
 		this.id = id;
+		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -30,13 +32,20 @@ public class Cliente {
 		
 	}
 
-	
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getNombre() {
@@ -46,11 +55,12 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
 
-	public void setApelido(String apellido) {
+	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
@@ -77,8 +87,7 @@ public class Cliente {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-    
-	
-	
-    
 }
+
+
+		
