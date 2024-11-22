@@ -1,5 +1,9 @@
 package ar.edu.ies6.repository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ClienteRepository {
+import ar.edu.ies6.model.Cliente;
+
+public interface ClienteRepository extends CrudRepository<Cliente,String> {
+
 
 }
