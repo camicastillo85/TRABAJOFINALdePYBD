@@ -32,7 +32,7 @@ public class CompraController {
 	*/
 	
 	@GetMapping("/compras")
-	public ModelAndView getIndexWithDocente() {
+	public ModelAndView getIndexWithCompra() {
 		//Codigo 
 		//Creado el docente
 		//Docente unDocente = new Docente();
@@ -42,8 +42,8 @@ public class CompraController {
 		
 		//transporte hacia la vista
 		ModelAndView transportador = new ModelAndView("indexCompra");
-		transportador.addObject("compras",unCompra);
-        //transportador.addObject("band",false);
+		transportador.addObject("compra",unCompra);//se cambio compras a compra
+        transportador.addObject("band",false);
 		return transportador;
 	}
 	
@@ -67,7 +67,7 @@ public class CompraController {
 	}
 	
 	//eliminar
-	@GetMapping("/eliminarDocente/{idCompra}")
+	@GetMapping("/eliminarCompra/{idCompra}")
 	public ModelAndView deleteCompra(@PathVariable(name="idCompra") String idCompra) {
 		
 		compraService.eliminarCompra(idCompra);
@@ -80,7 +80,7 @@ public class CompraController {
 	
 	//modificar
 	@GetMapping("/modificarCompra/{idCompra}")
-	public ModelAndView modificarDocente(@PathVariable(name="idCompra") String idCompra) {
+	public ModelAndView modificarCompra(@PathVariable(name="idCompra") String idCompra) {
 		//el parametro del constructor ModelAndView es una Vista HTML
 		ModelAndView modelView= new ModelAndView("indexCompra");
 		modelView.addObject("compra",compraService.consultarCompra(idCompra));
