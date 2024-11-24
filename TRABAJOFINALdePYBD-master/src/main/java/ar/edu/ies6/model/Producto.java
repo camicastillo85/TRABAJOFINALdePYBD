@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Producto {
-    @Id
+public class Producto { //este bloque de codigo sirve para crear la tabla msql
+    @Id  //comienza desde la linea 10 a la 45
     @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Integer id;
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Producto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <header >
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="https://ifdc6m-juj.infd.edu.ar/sitio/wp-content/uploads/2020/11/Screenshot_1000.png" 
+                         alt="Inicio" 
+                         style="height: 40px;">
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/productos">Lista de Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/formularioCrear">Agregar Producto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+   
+    <main class="container mt-4">
+        <h2 class="text-center">Actualizar Producto</h2>
+        <form th:action="@{/actualizarProducto}" method="POST" class="mt-4">
+            <div class="mb-3">
+                 <!-- Campo oculto para enviar el id -->
+                 <input type="hidden" th:name="id" th:value="${producto.id}" />
+
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" th:value="${producto.nombre}" required>
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" step="0.01" class="form-control" id="precio" name="precio" th:value="${producto.precio}" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" th:text="${producto.descripcion}" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-select" id="estado" name="estado" required>
+                    <option th:value="true" th:selected="${producto.estado == true}">Activo</option>
+                    <option th:value="false" th:selected="${producto.estado == false}">Inactivo</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría</label>
+                <input type="text" class="form-control" id="categoria" name="categoria" th:value="${producto.categoria}" required>
+            </div>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" th:value="${producto.cantidad}" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaCreacion" class="form-label">Fecha de Creación</label>
+                <input type="date" class="form-control" id="fechaCreacion" name="fechaCreacion" th:value="${producto.fechaCreacion}" required>
+            </div>
+            <div class="mb-3">
+                <label for="marca" class="form-label">Marca</label>
+                <input type="text" class="form-control" id="marca" name="marca" th:value="${producto.marca}" required>
+            </div>
+            <div class="mb-3">
+                <label for="peso" class="form-label">Peso</label>
+                <input type="number" step="0.01" class="form-control" id="peso" name="peso" th:value="${producto.peso}" required>
+            </div>
+            <div class="mb-3">
+                <label for="dimensiones" class="form-label">Dimensiones</label>
+                <input type="text" class="form-control" id="dimensiones" name="dimensiones" th:value="${producto.dimensiones}" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaExpiracion" class="form-label">Fecha de Expiración</label>
+                <input type="date" class="form-control" id="fechaExpiracion" name="fechaExpiracion" th:value="${producto.fechaExpiracion}" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Actualizar Producto</button>
+        </form>
+    </main>
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2024 - Gestión de Productos</p>
+    </footer>
+</body>
+</html>
