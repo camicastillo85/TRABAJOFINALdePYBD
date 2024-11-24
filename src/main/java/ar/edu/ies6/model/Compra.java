@@ -1,7 +1,7 @@
 package ar.edu.ies6.model;
 
 import java.time.LocalDate;
-import java.util.List;//A1
+//import java.util.List;//A1
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import jakarta.persistence.Column;
 //import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Component
@@ -34,16 +34,23 @@ public class Compra {
 	private LocalDate fecha; 
 	@Column
 	private Double total;
+	//@Column
+	//@Column(nullable = false)
+	//private int cantidad;
+	//private Integer cantidad;
+	
+	@Column(nullable = false)
+    private Integer cantidad;
+	
 	@Column
-	private int cantidad;
+    private String metodoPago;
 	
 	public Compra() {
 		
 	}
 	
-	
 	public Compra(String idCompra, Boolean estado, String nombreProducto, Cliente cliente, Producto producto,
-			LocalDate fecha, Double total, int cantidad) {
+			LocalDate fecha, Double total, Integer cantidad, String metodoPago) {
 		super();
 		this.idCompra = idCompra;
 		this.estado = estado;
@@ -53,7 +60,40 @@ public class Compra {
 		this.fecha = fecha;
 		this.total = total;
 		this.cantidad = cantidad;
+		this.metodoPago = metodoPago;
 	}
+
+
+
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+
+
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+
+
+	public String getMetodoPago() {
+		return metodoPago;
+	}
+
+
+
+
+
+	public void setMetodoPago(String metodoPago) {
+		this.metodoPago = metodoPago;
+	}
+
+
+
 
 
 	public String getNombreProducto() {
@@ -64,14 +104,16 @@ public class Compra {
 		this.nombreProducto = nombreProducto;
 	}
 
-	public int getCantidad() {
+	/*
+	public Integer getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+		//this.cantidad = (cantidad == null) ? 0 : cantidad; // Verificar nulos
 	}
-	
+	*/
 
 	public Producto getProducto() {
 		return producto;

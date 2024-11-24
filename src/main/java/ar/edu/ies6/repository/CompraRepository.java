@@ -11,8 +11,10 @@ import ar.edu.ies6.model.Compra;
 public interface CompraRepository extends CrudRepository<Compra,String> {
 	
 	//public interface CompraRepository extends JpaRepository<Compra, String> 
+	/*
 	 List<Compra> findByCliente_DniCliente(String clienteId); //A1
 	 List<Compra> findByProducto_IdProducto(String productoId);//A1
 	
 	List<Compra>findByEstado(Boolean estado);
+	*/
 }
