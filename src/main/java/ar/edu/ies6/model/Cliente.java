@@ -2,51 +2,56 @@ package ar.edu.ies6.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Component
+@Entity
 public class Cliente {
 
-	private String id;
-	private String dni;
+	//private String id;
+	@Id
+	private String dniCliente;
+	@Column
     private String nombre;
-    private String apellido;
+	@Column
     private String email;
+	@Column
     private String telefono;
+	@Column
     private String direccion;
     
     
-    //constructor
-    public Cliente() {
-    	
-    }
+    
+	public Cliente() {
+		
+	}
 	
-	public Cliente(String id, String nombre, String apellido, String email, String telefono, String direccion, String dni) {
+	
+	
+	public Cliente(String dniCliente, String nombre, String email, String telefono, String direccion) {
 		super();
-		this.id = id;
-		this.dni = dni;
+		this.dniCliente = dniCliente;
 		this.nombre = nombre;
-		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.direccion = direccion;
-		
 	}
 
-	public String getId() {
-		return id;
+
+
+	public String getDniCliente() {
+		return dniCliente;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+
+
+	public void setDniCliente(String dniCliente) {
+		this.dniCliente = dniCliente;
 	}
 
-	public String getDni() {
-		return dni;
-	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -54,14 +59,6 @@ public class Cliente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
 	}
 
 	public String getEmail() {
@@ -87,7 +84,13 @@ public class Cliente {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-}
 
-
+	public void addAttribute(String string, Iterable<Cliente> all) {
+		// TODO Auto-generated method stub
 		
+	}
+    
+	
+	
+    
+}	
