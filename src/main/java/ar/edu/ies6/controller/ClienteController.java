@@ -1,49 +1,66 @@
 package ar.edu.ies6.controller;
 
-import org.springframework.stereotype.Controller;
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.ies6.model.Cliente;
-import ar.edu.ies6.service.IClienteService;
+//import ar.edu.ies6.repository.ClienteRepository;
+import ar.edu.ies6.service.ClienteService;
 
-@Controller
+@Controller//A1
+
 public class ClienteController {
-	//gestiona el acceso ala vista
+	//todo A1
 	@Autowired
-	Cliente unCliente;
+    private ClienteService clienteService;
 
-@Qualifier("servicioClienteBD")
-     IClienteService clienteService;
-	
-//creado del cliente
-@GetMapping("/cliente")
-public ModelAndView getIndexWithCliente () {
-	//transporte hacia la vista
-	
-	ModelAndView transportador = new ModelAndView("cliente");
-	transportador.addObject("cliente", "unCliente");
-	
-	return transportador;
-}
+    // Método para listar todos los clientes
+    @GetMapping("/clientes")
+    public ModelAndView listarClientes() {
+        ModelAndView modelAndView = new ModelAndView("listaClientes");
+        modelAndView.addObject("listadoClientes", clienteService.listarTodos());
+        modelAndView.addObject("band",false);//A1
+        return modelAndView;
+    }
 
-@PostMapping("/guardarCliente")
-public ModelAndView guardarCliente(Cliente cliente) {
-	
-	//ClienteServiceImp clienteService = new ClienteServiceImp();
-	clienteService.guardarCliente(cliente);
-	
-	ModelAndView transportador = new ModelAndView("listaCliente");
-	transportador.addObject("listadoCliente", clienteService.listarTodosCliente());
-	
-	return transportador;
-}
+    // Método para mostrar el formulario para un nuevo cliente
+    @GetMapping("/clientes/nuevo")
+    public ModelAndView nuevoClienteForm() {
+        ModelAndView modelAndView = new ModelAndView("formCliente");
+        modelAndView.addObject("cliente", new Cliente());
+        return modelAndView;
+    }
+
+    // Método para guardar un cliente
+    @PostMapping("/clientes/guardar")
+    public ModelAndView guardarCliente(@ModelAttribute Cliente cliente) {
+        clienteService.guardar(cliente);
+        ModelAndView modelAndView = new ModelAndView("listaClientes");
+        modelAndView.addObject("listadoClientes", clienteService.listarTodos());
+        return modelAndView;
+    }
+
+    // Método para editar un cliente existente
+    @GetMapping("/clientes/editar/{dniCliente}")
+    public ModelAndView editarCliente(@PathVariable String dniCliente) {
+        ModelAndView modelAndView = new ModelAndView("formCliente");
+        modelAndView.addObject("cliente", clienteService.obtenerPorDni(dniCliente));
+        modelAndView.addObject("band",true);//A1
+        return modelAndView;
+    }
+
+    // Método para eliminar un cliente
+    @GetMapping("/clientes/eliminar/{dniCliente}")
+    public ModelAndView eliminarCliente(@PathVariable String dniCliente) {
+        clienteService.eliminar(dniCliente);
+        ModelAndView modelAndView = new ModelAndView("listaClientes");
+        modelAndView.addObject("listadoClientes", clienteService.listarTodos());
+        return modelAndView;
+    }
 }
