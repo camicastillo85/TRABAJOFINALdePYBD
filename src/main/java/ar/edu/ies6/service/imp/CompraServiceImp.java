@@ -13,8 +13,10 @@ import ar.edu.ies6.util.AlmacenCompras;
 
 @Service
 @Qualifier("servicioCompraArrayList")
-public class CompraServiceImp implements ICompraService{
-		
+public class CompraServiceImp {
+//public class CompraServiceImp implements ICompraService{
+	
+	/*
 	@Override
 	public void guardarCompra(Compra compra) {
 		AlmacenCompras.compras.add(compra);
@@ -44,4 +46,5 @@ public class CompraServiceImp implements ICompraService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
 }
