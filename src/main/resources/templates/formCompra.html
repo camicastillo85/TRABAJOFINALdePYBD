@@ -3,11 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de Compra</title>
-    <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+<style>
+    /* Estilos para mejorar la apariencia */
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+</style>
 </head>
 <body>
 	<div class="container">
@@ -31,22 +41,50 @@
             <div class="mb-3">
                 <label>Producto</label>
                 <!-- Dropdown para seleccionar el producto -->
+                
+                <!--  
                 <select th:field="*{producto.idProducto}" class="form-control" required>
                     <option th:each="producto : ${productos}" th:value="${producto.idProducto}" th:text="${producto.nombre}"></option>
                 </select>
+                -->
+                 <select id="productoSelect" th:field="*{producto.idProducto}" class="form-control" required>
+                    <option value="" disabled selected>Selecciona un producto</option>
+                    <option th:each="producto : ${productos}" 
+                            th:value="${producto.idProducto}" 
+                            th:data-precio="${producto.precio}" 
+                            th:data-stock="${producto.stock}" 
+                            th:text="${producto.nombre}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Precio del Producto</label>
+                <!-- Campo para mostrar el precio del producto seleccionado -->
+                <input type="text" id="precioProducto" class="form-control" readonly>
+            </div>
+            <div class="mb-3">
+                <label>Stock Disponible</label>
+                <!-- Campo para mostrar el stock del producto seleccionado -->
+                <input type="text" id="stockProducto" class="form-control" readonly>
             </div>
             <div class="mb-3">
                 <label>Fecha de la Compra</label>
                 <input type="date" th:field="*{fecha}" class="form-control" required>
             </div>
-            <!--
-            <div class="mb-3">
-                <label>Cantidad</label>
-                <input type="number" th:field="*{cantidad}" class="form-control" required>
-            </div> -->
+
             <div class="mb-3">
                 <label>Total</label>
                 <input type="number" step="0.01" th:field="*{total}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Cantidad</label>
+                <input type="number" th:field="*{cantidad}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Método de Pago</label>
+                <select th:field="*{metodoPago}" class="form-control" required>
+                    <option value="Tarjeta">Tarjeta</option>
+                    <option value="Efectivo">Efectivo</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
@@ -55,5 +93,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
+
 </body>
 </html>

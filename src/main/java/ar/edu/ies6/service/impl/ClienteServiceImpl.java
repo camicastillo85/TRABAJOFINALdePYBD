@@ -34,4 +34,6 @@ public class ClienteServiceImpl implements ClienteService{
     public void eliminar(String dniCliente) {
         clienteRepository.deleteById(dniCliente);
     }
+
 }
+

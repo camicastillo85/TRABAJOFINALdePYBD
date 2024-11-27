@@ -1,145 +1,95 @@
 package ar.edu.ies6.model;
+import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-
-import jakarta.persistence.*;
-import java.time.LocalDate;
-
+@Component
 @Entity
-public class Producto { //este bloque de codigo sirve para crear la tabla msql
-    @Id  //comienza desde la linea 10 a la 45
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  
-    private Integer id;
+public class Producto {
+	 @Id
+	 private String idProducto;
+	 @Column
+	 private String nombre;
+	 @Column
+	 private String descripcion;
+	 @Column
+	 private Double precio;
+	 @Column
+	 private Integer stock;
+	 private String imagenUrl;//A1
+	 
+	 
+	public Producto() {
+		
+	}
+	
+	
+	
+	public Producto(String idProducto, String nombre, String descripcion, Double precio, Integer stock,
+			String imagenUrl) {
+		super();
+		this.idProducto = idProducto;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.stock = stock;
+		this.imagenUrl = imagenUrl;
+	}
 
-    @Column
-    private String nombre;
 
-    @Column
-    private double precio;
 
-    @Column
-    private String descripcion;
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
 
-    @Column(name = "estado")
-    private Boolean estado = true;
 
-    @Column
-    private String categoria;
 
-    @Column
-    private Integer cantidad;
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
+	}
 
-    @Column(name = "fecha_creacion")
-    private LocalDate fechaCreacion;  
 
-    @Column
-    private String marca;
 
-    @Column
-    private Double peso;  
+	public String getNombre() {
+		return nombre;
+	}
 
-    @Column
-    private String dimensiones;  
+	public String getIdProducto() {
+		return idProducto;
+	}
 
-    @Column(name = "fecha_expiracion")
-    private LocalDate fechaExpiracion;  
+	public void setIdProducto(String idProducto) {
+		this.idProducto = idProducto;
+	}
 
-    // Getters y Setters
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public Double getPrecio() {
+		return precio;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 
-    public double getPrecio() {
-        return precio;
-    }
+	public Integer getStock() {
+		return stock;
+	}
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
-
-    public String getDimensiones() {
-        return dimensiones;
-    }
-
-    public void setDimensiones(String dimensiones) {
-        this.dimensiones = dimensiones;
-    }
-
-    public LocalDate getFechaExpiracion() {
-        return fechaExpiracion;
-    }
-
-    public void setFechaExpiracion(LocalDate fechaExpiracion) {
-        this.fechaExpiracion = fechaExpiracion;
-    }
-}
-
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+  }
+	 

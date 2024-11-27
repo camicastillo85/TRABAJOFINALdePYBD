@@ -1,70 +1,63 @@
 package ar.edu.ies6.controller;
 
-
-import ar.edu.ies6.model.Producto;
-//import com.example.demo.repository.ProductoRepository;
-import ar.edu.ies6.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-   
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import ar.edu.ies6.model.Producto;
+//import ar.edu.ies6.repository.ProductoRepository;
+import ar.edu.ies6.service.ProductoService;
+
 @Controller
 public class ProductoController {
 
-    @Autowired
+	@Autowired
     private ProductoService productoService;
 
-    // Página de inicio
-    @GetMapping("/inicio")
-    public String mostrarInicio() {
-        return "index";  
-    }
-
-    // Mostrar formulario para agregar un nuevo producto
-    @GetMapping("/formularioCrear")
-    public String mostrarFormularioCrear(Model model) {
-        model.addAttribute("producto", new Producto());  
-        return "formulario";  
-    }
-
-    // Mostrar formulario para editar un producto
-    @GetMapping("/formularioActualizar/{id}")
-    public String mostrarFormularioActualizar(@PathVariable Integer id, Model model) {
-        Producto producto = productoService.getProductoById(id);  
-        if (producto != null) {
-            model.addAttribute("producto", producto);  
-            return "formularioActualizar";  
-        }
-        return "redirect:/productos?error=ProductoNoEncontrado";  
-    }
-
-    // Crear un nuevo producto
-    @PostMapping("/guardarProducto")
-    public String guardarProducto(@ModelAttribute Producto producto, Model model) {
-        productoService.createProducto(producto);  
-        return "redirect:/productos";  
-    }
-
-    // Actualizar un producto
-    @PostMapping("/actualizarProducto")
-    public String actualizarProducto(@ModelAttribute Producto producto, Model model) {
-        productoService.updateProducto(producto);  
-        return "redirect:/productos";  
-    }
-
-    // Mostrar lista de productos activos
+    // Método para listar todos los productos
     @GetMapping("/productos")
-    public String listaProductos(Model model) {
-        model.addAttribute("productos", productoService.getAllProductos());  
-        return "listaProductos";
+    public ModelAndView listarProductos() {
+        ModelAndView modelAndView = new ModelAndView("listaProductos");
+        modelAndView.addObject("listadoProductos", productoService.listarTodos());
+        return modelAndView;
     }
 
-    // Eliminar (actualizar estado a false) un producto
-    @PostMapping("/eliminarProducto/{id}")
-    public String eliminarProducto(@PathVariable Integer id) {
-        productoService.eliminarProducto(id);  
-        return "redirect:/productos";  
+    // Método para mostrar el formulario para un nuevo producto
+    @GetMapping("/productos/nuevo")
+    public ModelAndView nuevoProductoForm() {
+        ModelAndView modelAndView = new ModelAndView("formProducto");
+        modelAndView.addObject("producto", new Producto());
+        return modelAndView;
+    }
+
+    // Método para guardar un producto
+    @PostMapping("/productos/guardar")
+    public ModelAndView guardarProducto(@ModelAttribute Producto producto) {
+        productoService.guardar(producto);
+        ModelAndView modelAndView = new ModelAndView("listaProductos");
+        modelAndView.addObject("listadoProductos", productoService.listarTodos());
+        return modelAndView;
+    }
+
+    // Método para editar un producto existente
+    @GetMapping("/productos/editar/{idProducto}")
+    public ModelAndView editarProducto(@PathVariable String idProducto) {
+        ModelAndView modelAndView = new ModelAndView("formProducto");
+        modelAndView.addObject("producto", productoService.obtenerPorId(idProducto));
+        return modelAndView;
+    }
+
+    // Método para eliminar un producto
+    @GetMapping("/productos/eliminar/{idProducto}")
+    public ModelAndView eliminarProducto(@PathVariable String idProducto) {
+        productoService.eliminar(idProducto);
+        ModelAndView modelAndView = new ModelAndView("listaProductos");
+        modelAndView.addObject("listadoProductos", productoService.listarTodos());
+        return modelAndView;
     }
 }
 
