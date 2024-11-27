@@ -1,11 +1,25 @@
 package ar.edu.ies6.model;
 
+import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Component
+@Entity
 public class Cliente {
 
-	private String id;
+	//private String id;
+	@Id
+	private String dniCliente;
+	@Column
     private String nombre;
+	@Column
     private String email;
+	@Column
     private String telefono;
+	@Column
     private String direccion;
     
     
@@ -13,24 +27,31 @@ public class Cliente {
 	public Cliente() {
 		
 	}
-
-	public Cliente(String id, String nombre, String email, String telefono, String direccion) {
+	
+	
+	
+	public Cliente(String dniCliente, String nombre, String email, String telefono, String direccion) {
 		super();
-		this.id = id;
+		this.dniCliente = dniCliente;
 		this.nombre = nombre;
 		this.email = email;
 		this.telefono = telefono;
 		this.direccion = direccion;
 	}
 
-	
-	public String getId() {
-		return id;
+
+
+	public String getDniCliente() {
+		return dniCliente;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+
+
+	public void setDniCliente(String dniCliente) {
+		this.dniCliente = dniCliente;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
@@ -62,6 +83,11 @@ public class Cliente {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public void addAttribute(String string, Iterable<Cliente> all) {
+		// TODO Auto-generated method stub
+		
 	}
     
 	

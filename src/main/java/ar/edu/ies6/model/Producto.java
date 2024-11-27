@@ -1,38 +1,68 @@
 package ar.edu.ies6.model;
 
-public class Producto {
+import org.springframework.stereotype.Component;
 
-	 private String id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Component
+@Entity
+public class Producto {
+	 @Id
+	 private String idProducto;
+	 @Column
 	 private String nombre;
+	 @Column
 	 private String descripcion;
+	 @Column
 	 private Double precio;
+	 @Column
 	 private Integer stock;
-	 //private String imagenUrl;
+	 private String imagenUrl;//A1
 	 
 	 
 	public Producto() {
 		
 	}
 	
-	public Producto(String id, String nombre, String descripcion, Double precio, Integer stock) {
+	
+	
+	public Producto(String idProducto, String nombre, String descripcion, Double precio, Integer stock,
+			String imagenUrl) {
 		super();
-		this.id = id;
+		this.idProducto = idProducto;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.stock = stock;
+		this.imagenUrl = imagenUrl;
 	}
 
-	public String getId() {
-		return id;
+
+
+	public String getImagenUrl() {
+		return imagenUrl;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+
+
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public String getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(String idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public void setNombre(String nombre) {
@@ -62,7 +92,5 @@ public class Producto {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-	 
-	 
 	 
 }

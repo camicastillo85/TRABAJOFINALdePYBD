@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 import ar.edu.ies6.model.Compra;
 import ar.edu.ies6.repository.CompraRepository;
 import ar.edu.ies6.service.ICompraService;
-
+//<!-- Esto No va Profe -->
 
 @Service
 @Qualifier("servicioCompraBD")
-public class CompraServiceBD implements ICompraService{
+public class CompraServiceBD {
+//public class CompraServiceBD implements ICompraService{	
 	
+	/*
 	@Autowired
 	CompraRepository compraRepository;
 
@@ -60,5 +62,5 @@ public class CompraServiceBD implements ICompraService{
 	}
 
 	
-	
+	*/
 }

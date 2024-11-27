@@ -9,7 +9,7 @@ import ar.edu.ies6.model.Compra;
 import ar.edu.ies6.service.ICompraService;
 import ar.edu.ies6.util.AlmacenCompras;
 
-
+//<!-- Esto No va Profe -->
 
 @Service
 @Qualifier("servicioCompraArrayList")
