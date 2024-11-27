@@ -1,5 +1,4 @@
 package ar.edu.ies6.model;
-
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
@@ -92,5 +91,5 @@ public class Producto {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
+  }
 	 
-}

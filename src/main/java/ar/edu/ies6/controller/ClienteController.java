@@ -1,6 +1,4 @@
 package ar.edu.ies6.controller;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,4 +62,4 @@ public class ClienteController {
         modelAndView.addObject("listadoClientes", clienteService.listarTodos());
         return modelAndView;
     }
-}
+
