@@ -1,68 +1,145 @@
 package ar.edu.ies6.model;
 
-public class Producto {
 
-	 private String id;
-	 private String nombre;
-	 private String descripcion;
-	 private Double precio;
-	 private Integer stock;
-	 //private String imagenUrl;
-	 
-	 
-	public Producto() {
-		
-	}
-	
-	public Producto(String id, String nombre, String descripcion, Double precio, Integer stock) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.precio = precio;
-		this.stock = stock;
-	}
 
-	public String getId() {
-		return id;
-	}
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+@Entity
+public class Producto { //este bloque de codigo sirve para crear la tabla msql
+    @Id  //comienza desde la linea 10 a la 45
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
+    private Integer id;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Column
+    private String nombre;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @Column
+    private double precio;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    @Column
+    private String descripcion;
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    @Column(name = "estado")
+    private Boolean estado = true;
 
-	public Double getPrecio() {
-		return precio;
-	}
+    @Column
+    private String categoria;
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
+    @Column
+    private Integer cantidad;
 
-	public Integer getStock() {
-		return stock;
-	}
+    @Column(name = "fecha_creacion")
+    private LocalDate fechaCreacion;  
 
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-	 
-	 
-	 
+    @Column
+    private String marca;
+
+    @Column
+    private Double peso;  
+
+    @Column
+    private String dimensiones;  
+
+    @Column(name = "fecha_expiracion")
+    private LocalDate fechaExpiracion;  
+
+    // Getters y Setters
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public String getDimensiones() {
+        return dimensiones;
+    }
+
+    public void setDimensiones(String dimensiones) {
+        this.dimensiones = dimensiones;
+    }
+
+    public LocalDate getFechaExpiracion() {
+        return fechaExpiracion;
+    }
+
+    public void setFechaExpiracion(LocalDate fechaExpiracion) {
+        this.fechaExpiracion = fechaExpiracion;
+    }
 }
+
